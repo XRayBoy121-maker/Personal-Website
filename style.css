@@ -481,3 +481,95 @@ section {
 .thank-you-container .btn {
     box-shadow: 0 0 1rem var(--main-color);
 }
+.projects {
+    background: var(--second-bg-color);
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 3rem;
+}
+
+.project-box {
+    position: relative;
+    border-radius: 2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
+    
+    /* Image settings */
+    background-size: cover;
+    background-position: center;
+    min-height: 35rem; /* Ensures all boxes have a consistent height */
+    transition: transform 0.5s ease;
+}
+
+.project-box:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* This is the color overlay */
+.project-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, var(--main-color), rgba(0, 0, 0, 0.1));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.project-box:hover::before {
+    opacity: 1;
+}
+
+.project-content {
+    position: relative; /* To appear above the ::before overlay */
+    z-index: 1;
+    padding: 2rem;
+    color: var(--text-color);
+    
+    /* Hide content by default */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.project-box:hover .project-content {
+    /* Show content on hover */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-content h4 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.project-content p {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.project-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    background: var(--bg-color);
+    border-radius: 50%;
+    color: var(--main-color);
+    /* THIS IS THE UPDATED LINE */
+    font-size: 5.5rem; /* Increased from 2.5rem for a larger icon */
+}
+
+.project-link:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+}
